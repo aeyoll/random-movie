@@ -3,7 +3,6 @@ from scenedetect.video_manager import VideoManager
 from scenedetect.scene_manager import SceneManager
 from scenedetect.stats_manager import StatsManager
 from scenedetect.detectors.content_detector import ContentDetector
-from timecode import Timecode
 import random
 import os
 
@@ -72,23 +71,24 @@ def get_random_scene(scene_list):
 def timecode_to_seconds(timecode):
     a = timecode.split(':')
     r = 0
-    if(len(a) == 3):
+    if len(a) == 3:
         h = int(float(a[0]))
         m = int(float(a[1]))
         s = int(float(a[2]))
         r = r + (h*3600)
         r = r + (m*60)
         r = r + s
-    elif(len(a) == 2):
+    elif len(a) == 2:
         m = int(float(a[0]))
         s = int(float(a[1]))
         r = r + (m*60)
         r = r + s
-    elif(len(a) == 1):
+    elif len(a) == 1:
         s = int(float(a[0]))
         r = s
     else:
         r = 0
+
     return r
 
 
